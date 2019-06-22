@@ -1,0 +1,11 @@
+---
+applications:
+- name: amjs-support-slackbot
+  memory: 512M
+  instances: 1
+  command: node app.js
+  buildpacks:
+  - nodejs_buildpack
+  routes:
+  - route: amjs-support-slackbot.cfapps.io
+
