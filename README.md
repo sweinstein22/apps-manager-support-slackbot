@@ -15,7 +15,9 @@ Note that not removing the `node_modules` folder may cause the push to fail as t
 If you're pushing the app for the first time, there are two environment variables that need to be set. These two env vars can be found in the LastPass entry titled 'Apps Manager Support Slackbot', and should be set using the command `cf set-env amjs-support-slackbot ${env_name} ${env_value}`.
 
 ## Configuring the bot in Slack
-This bot is configured as a Slack app, which can be configured with the associated [Slack app](https://pivotal.slack.com/apps/A0F7VRG6Q-outgoing-webhooks?next_id=0). 
+This bot is configured as a Slack app, which can be configured with the associated [Slack app](https://pivotal.slack.com/apps).
+
+If you need to make adjustments to the [Slack app configuration](https://api.slack.com/apps), you'll need to be a collaborator. If you aren't one already, ask a current collaborator to add you.
 
 Create a Bot User and give it a name. Set it to show as always being online.
 
