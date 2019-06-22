@@ -27,7 +27,7 @@ Subscribe to the Bot Events `message.channels`, `message.groups`, `message.im`, 
 On the Oauth & Permissions tab, take note of the Bot User OAuth Access Token. This will be set as the `SLACK_BOT_TOKEN` environment variable. On the Basic Information tab, take note of the Signing Secret. This will be set as the `SLACK_SIGNING_SECRET` environment variable.
 
 ## Disabling the bot
-The bot can be disabled, or deleted, from the same configuration page from which it is set up.
+The bot can be disabled, or deleted, from the app's [configuration page](https://pivotal.slack.com/apps/AKFTQDLQJ-apps-manager-support-bot).
 
 ## Underlying tech
 This bot leverages [Bolt](https://slack.dev/bolt/tutorial/getting-started), which is a framework meant to help build Slack apps.
