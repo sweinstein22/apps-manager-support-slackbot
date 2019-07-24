@@ -9,7 +9,7 @@ const springKeyWords = ['spring app', 'steeltoe app', 'actuator endpoint'];
 const certKeyWords = ['blank apps manager', 'cert', 'my appsman broke', '502'];
 const cloudfoundryapplicationKeyWords = ['cloudfoundryapplication'];
 const websocketKeyWords = ['426', 'upgrade required', 'websocket', 'streaming logs', 'search bar'];
-const uaaKeyWords = ['reset password', 'login page of apps manager']
+const uaaKeyWords = ['reset password', 'login page of apps manager'];
 
 const clippyKeyWords = ['clippy'];
 
