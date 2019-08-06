@@ -5,7 +5,11 @@ Slackbot to help field common support requests about Apps Manager
 Phrases and responses are configured in the `app.js` file.
 
 ## Running the bot locally
-The bot can be run locally using the command `node app.js`. To avoid having to continue pushing the app while developing to see changes, a local Request URL can be used. Run `ngrok http 3000`, copy the url it provides, and change the app's Event Subscriptions configuration Request URL to `${url}/slack/events`. 
+Note that the pages referenced below refer to pages of the [Slack app configuration](https://api.slack.com/apps).
+
+First, set up the two environment variables you will need by running: `export SLACK_SIGNING_SECRET=<signing secret from the Basic Information page>` and `export SLACK_BOT_TOKEN=xoxb-<bot token from OAuth & Permissions page>`. Next, run `npm install` to pull in necessary dependencies. The bot can then be run locally using the command `node app.js`.
+
+To avoid having to continue pushing the app while developing to see changes, a local Request URL can be used. Run `ngrok http 3000`, copy the url it provides, and change the app's Event Subscriptions page's Request URL to `${url}/slack/events`. 
 
 ## Pushing the bot
 This bot is located in the `apps-manager` org and `development` space on PWS, under the application name `amjs-support-slackbot`. Use `cf push` while in this directory to push any changes you have made to the bot.
