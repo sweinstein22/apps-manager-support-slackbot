@@ -5,6 +5,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+const autoscalerManageWords = ['autoscaler manage link', '"manage" link for autoscale', 'manage button that throws 404'];
 const springKeyWords = ['spring app', 'steeltoe app', 'actuator endpoint'];
 const certKeyWords = ['blank apps manager', 'cert', 'my appsman broke', '502'];
 const cloudfoundryapplicationKeyWords = ['cloudfoundryapplication'];
@@ -24,6 +25,7 @@ const contains = (message, pattern) => {
 }
 
 const botText = ({message, userName}) => {
+  if (contains(message, autoscalerManageWords)) return "Hi <@" + userName+ ">! It sounds like you might be asking a question about the 'Manage' link for autoscaler instances in Apps Manager being an invalid link. This is caused when you upgrade from an earlier version of PAS to PAS 2.3 or later. The autoscaler service instance may still be associated with a `dashboard_url`, which triggers Apps Manager to render the 'Manage' link, but the link leads to a `404`. \n\n The fix is to delete and recreate the autoscaler service instance. Further details can be found in this KB article: <https://community.pivotal.io/s/article/autoscaler-manage-button-in-apps-manager-shows-404-not-found-error> \n\n If this isn't what you're looking for, one of my humans will be with you when they have a moment.";
   if (contains(message, springKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be looking for information on spring or steeltoe app actuator endpoints. This KB article about troubleshooting spring apps might help: <https://community.pivotal.io/s/article/Spring-Boot-Actuator-Tabs-Not-Showing-in-Apps-Manager>. \n\n If it doesn't have what you're looking for, one of my humans will be with you when they have a moment.";
   if (contains(message, certKeyWords)) return "Hi <@" + userName + ">! It sounds like you might be looking for information on Apps Manager's interaction with SSL Certificate Validation. This KB article might help: <https://community.pivotal.io/s/article/ssl-validation-issue-apps-manager-shows-no-content>. \n\n If it doesn't have what you're looking for, one of my humans will be with you when they have a moment.";
   if (contains(message, cloudfoundryapplicationKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be looking for information on 404 errors displayed in the browser console on requests to a URL ending in `/cloudfoundryapplication`. Apps Manager makes such a request to an app when you visit the app page in Apps Manager, to determine whether the app has Spring or Steeltoe actuator endpoints, and if the app does not, seeing a 404 error in the console is normal. \n\n If the app does have Spring/Steeltoe actuator endpoints and you see the request to those endpoints failing, this KB article may help you diagnose the issue: <https://community.pivotal.io/s/article/Spring-Boot-Actuator-Tabs-Not-Showing-in-Apps-Manager> \n\n If it doesn't have what you're looking for, one of my humans will be with you when they have a moment.";
