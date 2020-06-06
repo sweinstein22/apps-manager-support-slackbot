@@ -12,6 +12,7 @@ const cloudfoundryapplicationKeyWords = ['cloudfoundryapplication'];
 const websocketKeyWords = ['426', 'upgrade required', 'websocket', 'streaming logs', 'search bar'];
 const uaaKeyWords = ['reset password', 'login page of apps manager'];
 const redirectKeyWords = ['invalid redirect', 'request for authorization was invalidpack'];
+const appMetricsKeyWords = ['view in pcf metrics', 'view in app metrics', 'metrics link', 'metrics 2.0',];
 
 const clippyKeyWords = ['clippy'];
 
@@ -33,7 +34,8 @@ const botText = ({message, userName}) => {
   if (contains(message, websocketKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be looking for a solution to failure of the search or streaming logs functionality in Apps Manager on PAS 2.6 or earlier. If your environment is using an untrusted certificate, you should see a prompt to click through to a window in which you can accept the untrusted certificate. After doing so, close the newly-opened window and click the browser refresh button to reload Apps Manager, and the problem should be solved. \n\nIf you are using a trusted certificate or have accepted the untrusted certificate and are still seeing a problem, and the browser console shows a `426 Upgrade Required error`, this indicates that your environment's network infrastructure does not support the necessary WebSocket connection. This is an issue particularly if your environment is using AWS Elastic Load Balancing (ELB), and one solution is to switch to using AWS Application Load Balancers. This forum post has more information on the ELB WebSocket issue: <https://forums.aws.amazon.com/thread.jspa?threadID=231996> \n\n If it doesn't have what you're looking for, one of my humans will be with you when they have a moment.";
   if (contains(message, uaaKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be asking a question about the Apps Manager login page or user password flow. That functionality is owned by UAA, and questions can be directed to their channel, #pcf-uaa. \n\n If this isn't what you're looking for, one of my humans will be with you when they have a moment.";
   if (contains(message, redirectKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be asking a question about an invalid redirect error when logging in to Apps Manager. The details about setting up redirect URIs in this doc might help: <https://docs.pivotal.io/platform/application-service/2-8/operating/configure-multi-foundation.html> \n\n If this isn't what you're looking for, one of my humans will be with you when they have a moment.";
-
+  if (contains(message, appMetricsKeyWords)) return "Hi <@" + userName+ ">! It sounds like you might be asking a question about a problem with Apps Manager's Metrics integration. The known issues around this integration might help: <https://docs.pivotal.io/platform/2-7/release-notes/runtime-rn.html#apps-manager-app-metrics-link> \n\n If this isn't what you're looking for, one of my humans will be with you when they have a moment.";
+  
   if (contains(message, clippyKeyWords)) return "Hi <@" + userName+ ">! Hi user! It sounds like you appreciate Microsoft's best feature ever. Here are some communities of Clippy's biggest fans. \n <https://www.facebook.com/MicrosoftClippy> \n <https://steamcommunity.com/groups/ClippyFanclub> \n <https://twitter.com/ClippyFans>";
 };
 
